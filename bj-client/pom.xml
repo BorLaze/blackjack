@@ -10,8 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>bj-client</artifactId>
-    <name>Standalone client</name>
-    <description>Standalone blackjack client; interacts with Blackjack server</description>
+    <name>Standalone blackjack client</name>
+    <description>Standalone client; interacts with Blackjack server</description>
     <packaging>jar</packaging>
     <version>0.0-SNAPSHOT</version>
 
@@ -21,5 +21,80 @@
             <artifactId>bj-core</artifactId>
             <version>0.0-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springboot.version}</version>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                        <configuration>
+                            <additionalProperties>
+                                <java.version>${java.version}</java.version>
+                            </additionalProperties>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>run</classifier>
+                            <executable>true</executable>
+                            <mainClass>ua.in.lbn.bj.BjClientApp</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
