@@ -10,8 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>bj-client</artifactId>
-    <name>Standalone blackjack client</name>
-    <description>Standalone client; interacts with Blackjack server</description>
+    <name>Standalone client</name>
+    <description>Standalone blackjack client; interacts with Blackjack server</description>
     <packaging>jar</packaging>
     <version>0.0-SNAPSHOT</version>
 

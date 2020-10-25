@@ -1,4 +1,4 @@
-package ua.in.lbn.bj;
+package ua.in.lbn.bj.domain;
 
 import org.apache.commons.lang3.math.NumberUtils;
 

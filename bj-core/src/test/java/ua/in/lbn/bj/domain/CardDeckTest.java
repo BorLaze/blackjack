@@ -1,4 +1,4 @@
-package ua.in.lbn.bj;
+package ua.in.lbn.bj.domain;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

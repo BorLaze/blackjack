@@ -12,7 +12,7 @@
 
     <modules>
         <module>bj-core</module>
-        <module>bj-de</module>
+        <module>bj-ge</module>
         <module>bj-server</module>
         <module>bj-client</module>
         <module>bj-web</module>

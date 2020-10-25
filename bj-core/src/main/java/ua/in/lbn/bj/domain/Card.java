@@ -1,4 +1,4 @@
-package ua.in.lbn.bj;
+package ua.in.lbn.bj.domain;
 
 public class Card {
 

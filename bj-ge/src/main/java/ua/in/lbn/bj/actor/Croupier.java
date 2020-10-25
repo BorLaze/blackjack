@@ -1,40 +1,53 @@
-package ua.in.lbn.bj;
+package ua.in.lbn.bj.actor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static ua.in.lbn.bj.CardValue.ACE;
-import static ua.in.lbn.bj.Game.WIN_SCORE;
+import ua.in.lbn.bj.domain.Card;
 
-/**
- * Class describes player's hand (stock of cards)
- */
-public class Hand {
+import static ua.in.lbn.bj.domain.CardValue.ACE;
 
-    private final List<Card> cardStock = newArrayList();
+public class Croupier {
+
+    public static final int WIN_SCORE = 21;
 
     /**
-     * Add new card to player's hand
+     * Make a decision on the player
      *
-     * @param card card to add
-     * @return this
+     * @param player player
+     * @return {@link Judgment}
      */
-    public Hand addCard(Card card) {
-        cardStock.add(card);
-        return this;
+    public Judgment judgment(Player player) {
+        int score = score(player);
+
+        if (score == WIN_SCORE) {
+            return Judgment.WIN;
+        }
+        if (score > WIN_SCORE) {
+            return Judgment.LOSS;
+        }
+        return Judgment.PLAY;
+    }
+
+    public Player judgment(Player playerA, Player playerB) {
+        int scoreA = score(playerA);
+        int scoreB = score(playerB);
+
+        //fixme: impl EQUAL
+
+        return (scoreA > scoreB) ? playerA : playerB;
     }
 
     /**
      * Calculate total score of player's cards
      *
+     * @param player player's hand
      * @return score
      */
-    public int score() {
+    public int score(Player player) {
         final List<List<Card>> cardPartitions = new ArrayList<>(
-                cardStock.stream()
+                player.getCardStock().stream()
                         .collect(
                                 Collectors.partitioningBy(card -> card.getCardValue() == ACE)
                         )
@@ -54,11 +67,6 @@ public class Hand {
         return nonAcesScore + acesScore;
     }
 
-    @Override
-    public String toString() {
-        return Arrays.deepToString(cardStock.toArray());
-    }
-
     /**
      * Calculate sum of non-ace cards (2-K). <br/>
      *
@@ -76,7 +84,7 @@ public class Hand {
     /**
      * Calculate sum of ace cards. <br/>
      *
-     * Aces are treated as 11 or 1 so that the sum does not exceed {@value ua.in.lbn.bj.Game#WIN_SCORE}.
+     * Aces are treated as 11 or 1 so that the sum does not exceed {@value Croupier#WIN_SCORE}.
      *
      * @param aceCards     aces part of player's cards
      * @param nonAcesScore sum of non-ace cards (2-K)
@@ -91,6 +99,15 @@ public class Hand {
             }
         }
         return acesScore;
+    }
+
+    public enum Judgment {
+        // fixme: EQUAL,
+        LOSS,
+        PLAY,
+        PLAYER_EXIT,
+        PLAYER_STAY,
+        WIN
     }
 
 }

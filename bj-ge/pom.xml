@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bj-de</artifactId>
-    <name>Decision engine</name>
-    <description>Decision engine of project</description>
+    <artifactId>bj-ge</artifactId>
+    <name>Game engine</name>
+    <description>Game engine of blackjack project</description>
     <packaging>jar</packaging>
     <version>0.0-SNAPSHOT</version>
 
