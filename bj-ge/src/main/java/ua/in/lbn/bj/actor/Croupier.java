@@ -102,11 +102,29 @@ public class Croupier {
     }
 
     public enum Judgment {
-        // fixme: EQUAL,
+        /**
+         * both players have equals score
+         */
+        EQUAL,
+        /**
+         * player's score > 21
+         */
         LOSS,
+        /**
+         * player can continue game
+         */
         PLAY,
-        PLAYER_EXIT,
-        PLAYER_STAY,
+        /**
+         * player wants to leave game
+         */
+        EXIT,
+        /**
+         * no more cards
+         */
+        STAY,
+        /**
+         * player wins
+         */
         WIN
     }
 
