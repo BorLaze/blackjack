@@ -34,7 +34,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_A() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, ACE));
 
         final Croupier.Judgment decision = croupier.judgment(player);
@@ -45,7 +45,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_A2A() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, ACE))
                 .hit(new Card(SPADES, TWO))
                 .hit(new Card(DIAMONDS, ACE));
@@ -58,7 +58,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_AA() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, ACE))
                 .hit(new Card(DIAMONDS, ACE));
 
@@ -70,7 +70,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_K() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, KING));
 
         final Croupier.Judgment decision = croupier.judgment(player);
@@ -81,7 +81,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_KA() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, KING))
                 .hit(new Card(SPADES, ACE));
 
@@ -93,7 +93,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_AK() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, ACE))
                 .hit(new Card(SPADES, KING));
 
@@ -105,7 +105,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_234() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, TWO))
                 .hit(new Card(SPADES, THREE))
                 .hit(new Card(SPADES, FOUR));
@@ -119,7 +119,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_K2Q() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, KING))
                 .hit(new Card(SPADES, TWO))
                 .hit(new Card(SPADES, QUEEN));
@@ -133,7 +133,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_KAQ() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, KING))
                 .hit(new Card(SPADES, ACE))
                 .hit(new Card(SPADES, QUEEN));
@@ -146,7 +146,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_A73() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, ACE))
                 .hit(new Card(SPADES, SEVEN))
                 .hit(new Card(SPADES, THREE));
@@ -159,7 +159,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_A5A3A() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, ACE))
                 .hit(new Card(SPADES, FIVE))
                 .hit(new Card(DIAMONDS, ACE))
@@ -174,7 +174,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_AAK() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, ACE))
                 .hit(new Card(DIAMONDS, ACE))
                 .hit(new Card(SPADES, KING));
@@ -187,7 +187,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_778() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, SEVEN))
                 .hit(new Card(DIAMONDS, SEVEN))
                 .hit(new Card(SPADES, EIGHT));
@@ -200,7 +200,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_K9() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, KING))
                 .hit(new Card(SPADES, NINE));
 
@@ -212,7 +212,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_K9A() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, KING))
                 .hit(new Card(SPADES, NINE))
                 .hit(new Card(SPADES, ACE));
@@ -225,7 +225,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_K9AA() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, KING))
                 .hit(new Card(SPADES, NINE))
                 .hit(new Card(SPADES, ACE))
@@ -239,7 +239,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_K9AAA() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, KING))
                 .hit(new Card(SPADES, NINE))
                 .hit(new Card(SPADES, ACE))
@@ -254,7 +254,7 @@ class CroupierDecisionTest {
 
     @Test
     void decide_A9A() {
-        Player player = new PlayerCasino(name, croupier);
+        AbstractPlayer player = new Casino(name, croupier);
         player.hit(new Card(SPADES, ACE))
                 .hit(new Card(SPADES, NINE))
                 .hit(new Card(DIAMONDS, ACE));

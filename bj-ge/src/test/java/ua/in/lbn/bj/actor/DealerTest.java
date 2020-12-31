@@ -18,11 +18,11 @@ class DealerTest {
         Dealer dealer = new Dealer(
                 new CardDeck(true),
                 croupier,
-                new PlayerCasino("playerA", croupier),
-                new PlayerCasino("playerB", croupier)
+                new Casino("playerA", croupier),
+                new Casino("playerB", croupier)
         );
 
-        Player player = dealer.deal();
+        AbstractPlayer player = dealer.deal();
 
         log.debug("Winner: {}, score {}", player, croupier.score(player));
 

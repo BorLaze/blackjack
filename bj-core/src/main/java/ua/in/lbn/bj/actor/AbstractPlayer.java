@@ -10,12 +10,12 @@ import static com.google.common.collect.Lists.newArrayList;
 /**
  * Abstract player
  */
-public abstract class Player {
+public abstract class AbstractPlayer {
 
     private final List<Card> cardStock = newArrayList();
     private final String name;
 
-    public Player(String name) {
+    protected AbstractPlayer(String name) {
         this.name = name;
     }
 
@@ -25,7 +25,7 @@ public abstract class Player {
      * @param card card to add
      * @return this
      */
-    public Player hit(Card card) {
+    public AbstractPlayer hit(Card card) {
         cardStock.add(card);
         return this;
     }
@@ -38,9 +38,9 @@ public abstract class Player {
      * Decide next step
      *
      * @param opponent opponent player
-     * @return {@link Player.Decision}
+     * @return {@link AbstractPlayer.Decision}
      */
-    public abstract Decision decide(Player opponent);
+    public abstract Decision decide(AbstractPlayer opponent);
 
     public String getName() {
         return name;
@@ -52,8 +52,8 @@ public abstract class Player {
     }
 
     public enum Decision {
+        EXIT,
         HIT,
         STAY,
-        EXIT
     }
 }

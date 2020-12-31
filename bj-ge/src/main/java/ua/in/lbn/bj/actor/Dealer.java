@@ -12,17 +12,17 @@ public class Dealer {
     private final CardDeck cardDeck;
 
     private final Croupier croupier;
-    private final Player playerA;
-    private final Player playerB;
+    private final AbstractPlayer playerA;
+    private final AbstractPlayer playerB;
 
-    public Dealer(CardDeck cardDeck, Croupier croupier, Player playerA, Player playerB) {
+    public Dealer(CardDeck cardDeck, Croupier croupier, AbstractPlayer playerA, AbstractPlayer playerB) {
         this.cardDeck = cardDeck;
         this.croupier = croupier;
         this.playerA = playerA;
         this.playerB = playerB;
     }
 
-    public Player deal() {
+    public AbstractPlayer deal() {
         Croupier.Judgment judgmentA = deal(playerA);
         switch (judgmentA) {
             case PLAY:
@@ -54,11 +54,11 @@ public class Dealer {
         }
     }
 
-    private Croupier.Judgment deal(Player player) {
+    private Croupier.Judgment deal(AbstractPlayer player) {
         return deal(player, null);
     }
 
-    private Croupier.Judgment deal(Player player, Player opponent) {
+    private Croupier.Judgment deal(AbstractPlayer player, AbstractPlayer opponent) {
         while (true) {
             Croupier.Judgment judgment = croupier.judgment(player);
             switch (judgment) {
@@ -73,6 +73,8 @@ public class Dealer {
                         case STAY:
                             judgment = Croupier.Judgment.STAY;
                             break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + player.decide(opponent));
                     }
                     break;
                 case LOSS:

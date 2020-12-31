@@ -3,19 +3,19 @@ package ua.in.lbn.bj.actor;
 /**
  * Computer player
  */
-public class PlayerCasino extends Player {
+public class Casino extends AbstractPlayer {
 
     private static final int STOP_SCORE = 17;
 
     private final Croupier croupier;
 
-    public PlayerCasino(String name, Croupier croupier) {
+    public Casino(String name, Croupier croupier) {
         super(name);
         this.croupier = croupier;
     }
 
     @Override
-    public Decision decide(Player opponent) {
+    public Decision decide(AbstractPlayer opponent) {
         int score = croupier.score(this);
 
         if (opponent == null) {

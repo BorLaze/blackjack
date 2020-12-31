@@ -3,14 +3,14 @@ package ua.in.lbn.bj.actor;
 /**
  * Human player
  */
-public class PlayerVisitor extends Player {
+public class Player extends AbstractPlayer {
 
-    public PlayerVisitor(String name) {
+    public Player(String name) {
         super(name);
     }
 
     @Override
-    public Decision decide(Player opponent) {
+    public Decision decide(AbstractPlayer opponent) {
         //fixme: implements me
         return null;
     }

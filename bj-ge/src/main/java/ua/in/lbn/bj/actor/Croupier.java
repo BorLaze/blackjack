@@ -18,7 +18,7 @@ public class Croupier {
      * @param player player
      * @return {@link Judgment}
      */
-    public Judgment judgment(Player player) {
+    public Judgment judgment(AbstractPlayer player) {
         int score = score(player);
 
         if (score == WIN_SCORE) {
@@ -30,7 +30,7 @@ public class Croupier {
         return Judgment.PLAY;
     }
 
-    public Player judgment(Player playerA, Player playerB) {
+    public AbstractPlayer judgment(AbstractPlayer playerA, AbstractPlayer playerB) {
         int scoreA = score(playerA);
         int scoreB = score(playerB);
 
@@ -45,7 +45,7 @@ public class Croupier {
      * @param player player's hand
      * @return score
      */
-    public int score(Player player) {
+    public int score(AbstractPlayer player) {
         final List<List<Card>> cardPartitions = new ArrayList<>(
                 player.getCardStock().stream()
                         .collect(
@@ -103,29 +103,29 @@ public class Croupier {
 
     public enum Judgment {
         /**
-         * both players have equals score
+         * both players have an equal score
          */
         EQUAL,
         /**
-         * player's score > 21
-         */
-        LOSS,
-        /**
-         * player can continue game
-         */
-        PLAY,
-        /**
-         * player wants to leave game
+         * leave the game
          */
         EXIT,
         /**
-         * no more cards
+         * player score > 21
+         */
+        LOSS,
+        /**
+         * can continue playing
+         */
+        PLAY,
+        /**
+         * no more cards needed
          */
         STAY,
         /**
-         * player wins
+         * player won
          */
-        WIN
+        WIN,
     }
 
 }
